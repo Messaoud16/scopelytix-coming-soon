@@ -889,14 +889,196 @@
         }
 
         /* Footer */
-        .footer-col:nth-child(2) a:nth-child(3), /* API */
-        .footer-col:nth-child(2) a:nth-child(4), /* Roadmap */
-        .footer-col:nth-child(3) a:nth-child(3), /* Guides */
-        .footer-col:nth-child(3) a:nth-child(4), /* Status */
-        .footer-col:nth-child(4) a:nth-child(3), /* Careers */
-        .footer-col:nth-child(4) a:nth-child(4)  /* Partners */
-        {
-            display: none;
+         .footer {
+            background-color: var(--gray-900);
+            color: var(--gray-400);
+            padding: var(--spacing-xxxl) 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxxl);
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.125rem;
+        }
+
+        .footer-col a {
+            color: var(--gray-400);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer .logo {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer .logo i {
+            color: var(--primary-400);
+        }
+
+        .footer p {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--gray-800);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-normal);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-500);
+            color: white;
+        }
+
+        .subscribe-form {
+            display: flex;
+            margin-top: var(--spacing-md);
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--gray-700);
+            background-color: var(--gray-800);
+            border-radius: var(--radius-md) 0 0 var(--radius-md);
+            color: white;
+        }
+
+        .subscribe-form button {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0 var(--spacing-lg);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+
+        .subscribe-form button:hover {
+            background: var(--gradient-primary-hover);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding: var(--spacing-lg) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-size: 0.875rem;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            font-size: 0.875rem;
+        }
+
+        .legal-links a {
+            color: var(--gray-500);
+        }
+
+        .legal-links a:hover {
+            color: var(--gray-300);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .features-grid,
+            .platform-cards,
+            .integration-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .benefits-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero .container {
+                flex-direction: column;
+            }
+            
+            .nav-links,
+            .nav-actions {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .features-grid,
+            .platform-cards,
+            .integration-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+            
+            .legal-links {
+                justify-content: center;
+            }
+
+            .integration-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Responsive Design */
