@@ -73,6 +73,8 @@
             --shopify: #95BF47;
             --etsy: #F56400;
             --printful: #1E88E5;
+            --salesforce: #00A1E0;
+            --google: #4285F4;
 
             /* Gradients */
             --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -80,6 +82,8 @@
             --gradient-shopify: linear-gradient(135deg, #95BF47 0%, #7CB342 100%);
             --gradient-etsy: linear-gradient(135deg, #F56400 0%, #E65100 100%);
             --gradient-printful: linear-gradient(135deg, #1E88E5 0%, #1565C0 100%);
+            --gradient-salesforce: linear-gradient(135deg, #00A1E0 0%, #1A3A8F 100%);
+            --gradient-google: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
 
             /* Shadows */
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -658,71 +662,133 @@
             margin-top: 3px;
         }
 
-        /* Integrations Section */
+        /* Updated Integrations Section */
         .integrations {
             background-color: white;
         }
 
         .integration-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: var(--spacing-xl);
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .integration-card {
+            background-color: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-normal);
+            border-left: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: var(--spacing-md);
-            padding: var(--spacing-lg);
-            background-color: var(--gray-50);
-            border-radius: var(--radius-lg);
-            transition: var(--transition-normal);
-            position: relative;
+            height: 100%;
         }
 
         .integration-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .integration-card.shopify {
+            border-left-color: var(--shopify);
+        }
+
+        .integration-card.etsy {
+            border-left-color: var(--etsy);
+        }
+
+        .integration-card.printful {
+            border-left-color: var(--printful);
+        }
+
+        .integration-card.salesforce {
+            border-left-color: var(--salesforce);
+        }
+
+        .integration-card.google {
+            border-left-color: var(--google);
+        }
+
+        .integration-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
         }
 
         .integration-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: var(--radius-lg);
-            background: var(--gradient-primary);
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-sm);
         }
 
         .integration-card.shopify .integration-icon {
             background: var(--gradient-shopify);
+            color: white;
         }
 
         .integration-card.etsy .integration-icon {
             background: var(--gradient-etsy);
+            color: white;
         }
 
         .integration-card.printful .integration-icon {
             background: var(--gradient-printful);
+            color: white;
         }
 
         .integration-card.salesforce .integration-icon {
-            background: linear-gradient(135deg, #00A1E0 0%, #1A3A8F 100%);
+            background: var(--gradient-salesforce);
+            color: white;
         }
 
         .integration-card.google .integration-icon {
-            background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+            background: var(--gradient-google);
+            color: white;
         }
 
         .integration-card h3 {
-            font-size: 1.125rem;
-            text-align: center;
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .integration-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .integration-features {
+            margin-top: auto;
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .integration-features ul {
+            list-style: none;
+        }
+
+        .integration-features li {
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            font-size: 0.9rem;
+        }
+
+        .integration-features li i {
+            color: var(--success-500);
+            margin-top: 3px;
         }
 
         /* Benefits Section */
@@ -814,7 +880,7 @@
             color: var(--primary-500);
         }
 
-        /* Footer */
+        /* Updated Footer */
         .footer {
             background-color: var(--gray-900);
             color: var(--gray-400);
@@ -1003,7 +1069,7 @@
             }
 
             .integration-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1042,63 +1108,9 @@
                 <h1>Smart sales analytics across all your platforms — track what’s working, optimize what’s not — all in one place.</h1>
                 <p>Scopelytix integrates data across multiple sales channels into one unified dashboard, helping sellers make better business decisions with Intelligent Analytics.</p>
                 
-                <div class="dashboard-preview">
-                    <div class="chart-container">
-                        <div class="chart-title">Revenue by Platform (Last 7 Days)</div>
-                        <div class="chart">
-                            <div class="chart-grid">
-                                <div class="grid-line"></div>
-                                <div class="grid-line"></div>
-                                <div class="grid-line"></div>
-                                <div class="grid-line"></div>
-                                <div class="grid-line"></div>
-                            </div>
-                            <div class="chart-bars">
-                                <div class="chart-bar" style="height: 40%;">
-                                    <div class="bar-label">Mon</div>
-                                </div>
-                                <div class="chart-bar" style="height: 65%;">
-                                    <div class="bar-label">Tue</div>
-                                </div>
-                                <div class="chart-bar" style="height: 80%;">
-                                    <div class="bar-label">Wed</div>
-                                </div>
-                                <div class="chart-bar" style="height: 70%;">
-                                    <div class="bar-label">Thu</div>
-                                </div>
-                                <div class="chart-bar" style="height: 90%;">
-                                    <div class="bar-label">Fri</div>
-                                </div>
-                                <div class="chart-bar" style="height: 75%;">
-                                    <div class="bar-label">Sat</div>
-                                </div>
-                                <div class="chart-bar" style="height: 60%;">
-                                    <div class="bar-label">Sun</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="metrics">
-                        <div class="metric success">
-                            <i class="fas fa-arrow-up"></i>
-                            <span>Revenue +24%</span>
-                        </div>
-                        <div class="metric warning">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <span>3 Slow Movers</span>
-                        </div>
-                    </div>
-                    <div class="platform-icons">
-                        <div class="platform-icon shopify">
-                            <i class="fab fa-shopify"></i>
-                        </div>
-                        <div class="platform-icon etsy">
-                            <i class="fab fa-etsy"></i>
-                        </div>
-                        <div class="platform-icon printful">
-                            <i class="fas fa-print"></i>
-                        </div>
-                    </div>
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary">Start Free Trial</a>
+                    <a href="#" class="btn btn-light">View Demo</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -1251,32 +1263,108 @@
             <div class="section-header">
                 <div class="badge">SEAMLESS INTEGRATIONS</div>
                 <h2>Connect your key sales platforms</h2>
-                <p>Scopelytix integrates effortlessly with the tools that matter most for your business.</p>
+                <p>Scopelytix integrates effortlessly with the tools that matter most for your business</p>
             </div>
             <div class="integration-grid">
                 <div class="integration-card shopify">
-                    <div class="integration-icon">
-                        <i class="fab fa-shopify"></i>
+                    <div class="integration-header">
+                        <div class="integration-icon">
+                            <i class="fab fa-shopify"></i>
+                        </div>
+                        <h3>Shopify</h3>
                     </div>
-                    <h3>Shopify</h3>
+                    <p>Connect your Shopify store to track orders, revenue, and customer behavior with detailed analytics.</p>
+                    <div class="integration-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Real-time sales tracking</li>
+                            <li><i class="fas fa-check"></i> Customer segmentation</li>
+                            <li><i class="fas fa-check"></i> Product performance</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="integration-card etsy">
-                    <div class="integration-icon">
-                        <i class="fab fa-etsy"></i>
+                    <div class="integration-header">
+                        <div class="integration-icon">
+                            <i class="fab fa-etsy"></i>
+                        </div>
+                        <h3>Etsy</h3>
                     </div>
-                    <h3>Etsy</h3>
+                    <p>Monitor your Etsy shop performance, reviews, and best-selling items in one unified dashboard.</p>
+                    <div class="integration-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Listing performance</li>
+                            <li><i class="fas fa-check"></i> Review sentiment analysis</li>
+                            <li><i class="fas fa-check"></i> Competitor benchmarking</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="integration-card printful">
-                    <div class="integration-icon">
-                        <i class="fas fa-print"></i>
+                    <div class="integration-header">
+                        <div class="integration-icon">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <h3>Printful</h3>
                     </div>
-                    <h3>Printful</h3>
+                    <p>Track fulfillment status, production costs, and profit margins for your print-on-demand business.</p>
+                    <div class="integration-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Fulfillment tracking</li>
+                            <li><i class="fas fa-check"></i> Profit margin analysis</li>
+                            <li><i class="fas fa-check"></i> Design performance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="integration-card salesforce">
+                    <div class="integration-header">
+                        <div class="integration-icon">
+                            <i class="fab fa-salesforce"></i>
+                        </div>
+                        <h3>Salesforce</h3>
+                    </div>
+                    <p>Sync customer data and sales pipelines with your CRM to get a complete view of your business.</p>
+                    <div class="integration-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Customer data sync</li>
+                            <li><i class="fas fa-check"></i> Sales pipeline tracking</li>
+                            <li><i class="fas fa-check"></i> Lead conversion analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="integration-card google">
+                    <div class="integration-header">
+                        <div class="integration-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <h3>Google Analytics</h3>
+                    </div>
+                    <p>Combine web analytics with sales data to understand customer journeys and conversion paths.</p>
+                    <div class="integration-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Traffic source analysis</li>
+                            <li><i class="fas fa-check"></i> Conversion tracking</li>
+                            <li><i class="fas fa-check"></i> Customer journey mapping</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="integration-card">
+                    <div class="integration-header">
+                        <div class="integration-icon" style="background: var(--primary-500);">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <h3>More Coming Soon</h3>
+                    </div>
+                    <p>We're constantly adding new integrations to help you get the most from your sales data.</p>
+                    <div class="integration-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> WooCommerce</li>
+                            <li><i class="fas fa-check"></i> Amazon</li>
+                            <li><i class="fas fa-check"></i> eBay</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <p class="coming-soon-text">More platform integrations coming soon.</p>
         </div>
     </section>
-
 
     <!-- Benefits Section -->
     <section id="benefits" class="benefits">
@@ -1379,22 +1467,19 @@
                     <h4>Product</h4>
                     <a href="#">Features</a>
                     <a href="#">Integrations</a>
-                    <a href="#">API</a>
-                    <a href="#">Roadmap</a>
+                    <!-- Removed: API, Roadmap -->
                 </div>
                 <div class="footer-col">
                     <h4>Resources</h4>
                     <a href="#">Documentation</a>
                     <a href="#">Blog</a>
-                    <a href="#">Guides</a>
-                    <a href="#">Status</a>
+                    <!-- Removed: Guides, Status -->
                 </div>
                 <div class="footer-col">
                     <h4>Company</h4>
                     <a href="#">About Us</a>
-                    <a href="#">Careers</a>
                     <a href="#">Contact</a>
-                    <a href="#">Partners</a>
+                    <!-- Removed: Careers, Partners -->
                 </div>
                 <div class="footer-col">
                     <h4>Stay Updated</h4>
@@ -1408,9 +1493,9 @@
             <div class="footer-bottom">
                 <div class="copyright">© 2023 Scopelytix. All rights reserved.</div>
                 <div class="legal-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="cookies.html">Cookie Policy</a>
                 </div>
             </div>
         </div>
