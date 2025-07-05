@@ -222,6 +222,18 @@
             margin-bottom: var(--spacing-lg);
         }
 
+        .coming-soon {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary-500);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-sm);
+        }
+
         /* Navigation */
         .navbar {
             position: fixed;
@@ -305,9 +317,10 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: var(--spacing-lg);
+            font-size: 2.75rem;
+            margin-bottom: var(--spacing-md);
             color: white;
+            line-height: 1.25;
         }
 
         .hero p {
@@ -315,6 +328,12 @@
             max-width: 600px;
             margin-bottom: var(--spacing-xl);
             opacity: 0.9;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xl);
         }
 
         .dashboard-preview {
@@ -412,6 +431,14 @@
             background: linear-gradient(to top, var(--primary-400), transparent);
             clip-path: polygon(0% 100%, 10% 80%, 20% 90%, 30% 40%, 40% 60%, 50% 30%, 60% 50%, 70% 20%, 80% 40%, 90% 10%, 100% 30%, 100% 100%, 0% 100%);
             animation: chartGrow 1.5s ease-out forwards;
+        }
+
+        .chart-points {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
         }
 
         .chart-point {
@@ -522,6 +549,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
+            position: relative;
         }
 
         .feature-card.animate {
@@ -660,6 +688,7 @@
             background-color: var(--gray-50);
             border-radius: var(--radius-lg);
             transition: var(--transition-normal);
+            position: relative;
         }
 
         .integration-card:hover {
@@ -693,6 +722,10 @@
 
         .integration-card.salesforce .integration-icon {
             background: linear-gradient(135deg, #00A1E0 0%, #1A3A8F 100%);
+        }
+
+        .integration-card.google .integration-icon {
+            background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
         }
 
         .integration-card h3 {
@@ -1014,8 +1047,13 @@
                     <span>SMART ANALYTICS</span>
                     <i class="fas fa-bolt"></i>
                 </div>
-                <h1>Know what's working, fix what's not — all in one place.</h1>
+                <h1>Smart multi-platform sales analytics for sellers — know what's working, fix what's not — all in one place.</h1>
                 <p>Scopelytix integrates data across multiple sales channels into one unified dashboard, helping sellers make better business decisions with AI-driven insights.</p>
+                
+                <div class="hero-cta">
+                    <a href="#features" class="btn btn-light">Explore Features</a>
+                </div>
+                
                 <div class="dashboard-preview">
                     <div class="chart-container">
                         <div class="chart-title">Revenue by Platform (Last 7 Days)</div>
@@ -1089,6 +1127,17 @@
                             </div>
                             <div class="chart-line-container">
                                 <div class="chart-line"></div>
+                                <div class="chart-points">
+                                    <div class="chart-point" style="left: 10%; bottom: 20%;"></div>
+                                    <div class="chart-point" style="left: 20%; bottom: 30%;"></div>
+                                    <div class="chart-point" style="left: 30%; bottom: 60%;"></div>
+                                    <div class="chart-point" style="left: 40%; bottom: 40%;"></div>
+                                    <div class="chart-point" style="left: 50%; bottom: 70%;"></div>
+                                    <div class="chart-point" style="left: 60%; bottom: 50%;"></div>
+                                    <div class="chart-point" style="left: 70%; bottom: 80%;"></div>
+                                    <div class="chart-point" style="left: 80%; bottom: 60%;"></div>
+                                    <div class="chart-point" style="left: 90%; bottom: 70%;"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1136,7 +1185,7 @@
                         <i class="fas fa-bell"></i>
                     </div>
                     <h3>Smart Alerts</h3>
-                    <p>Get notified about slow-moving products, inventory issues, or sudden sales spikes instantly.</p>
+                    <p>Stay ahead of slow-moving products, inventory issues, or sudden sales spikes.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -1150,7 +1199,7 @@
                         <i class="fas fa-lightbulb"></i>
                     </div>
                     <h3>Actionable Insights</h3>
-                    <p>AI-powered recommendations to optimize pricing, inventory, and marketing strategies.</p>
+                    <p>Personalized recommendations based on your sales trends to grow revenue and reduce manual work.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -1223,7 +1272,7 @@
     <section id="integrations" class="integrations">
         <div class="container">
             <div class="section-header">
-                <div class="badge">SEAMLESS INTEGRATIONS</div>
+                <div class="badge">EFFORTLESS INTEGRATIONS</div>
                 <h2>Works with your existing tools</h2>
                 <p>Connect Scopelytix with your favorite eCommerce platforms and services</p>
             </div>
@@ -1251,12 +1300,14 @@
                         <i class="fas fa-cloud"></i>
                     </div>
                     <h3>Salesforce</h3>
+                    <div class="coming-soon">Coming Soon</div>
                 </div>
-                <div class="integration-card">
+                <div class="integration-card google">
                     <div class="integration-icon">
                         <i class="fab fa-google"></i>
                     </div>
                     <h3>Google Analytics</h3>
+                    <div class="coming-soon">Coming Soon</div>
                 </div>
                 <div class="integration-card">
                     <div class="integration-icon">
@@ -1300,7 +1351,7 @@
                             </div>
                             <div>
                                 <h4>Save Time</h4>
-                                <p>Reduce hours spent on manual reporting by 80% with automated analytics</p>
+                                <p>Reduce time spent on manual reporting by up to 80%</p>
                             </div>
                         </div>
                         <div class="benefit-item">
