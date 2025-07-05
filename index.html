@@ -73,8 +73,6 @@
             --shopify: #95BF47;
             --etsy: #F56400;
             --printful: #1E88E5;
-            --salesforce: #00A1E0;
-            --google: #4285F4;
 
             /* Gradients */
             --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -82,8 +80,6 @@
             --gradient-shopify: linear-gradient(135deg, #95BF47 0%, #7CB342 100%);
             --gradient-etsy: linear-gradient(135deg, #F56400 0%, #E65100 100%);
             --gradient-printful: linear-gradient(135deg, #1E88E5 0%, #1565C0 100%);
-            --gradient-salesforce: linear-gradient(135deg, #00A1E0 0%, #1A3A8F 100%);
-            --gradient-google: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
 
             /* Shadows */
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -662,7 +658,19 @@
             margin-top: 3px;
         }
 
-        /* Updated Integrations Section */
+        /* Integrations Section */
+        .integrations {
+            background-color: white;
+        }
+
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
         .integrations {
             background-color: white;
         }
@@ -707,11 +715,11 @@
         }
 
         .integration-card.salesforce {
-            border-left-color: var(--salesforce);
+            border-left-color: #00A1E0;
         }
 
         .integration-card.google {
-            border-left-color: var(--google);
+            border-left-color: #4285F4;
         }
 
         .integration-header {
@@ -748,12 +756,12 @@
         }
 
         .integration-card.salesforce .integration-icon {
-            background: var(--gradient-salesforce);
+            background: linear-gradient(135deg, #00A1E0 0%, #1A3A8F 100%);
             color: white;
         }
 
         .integration-card.google .integration-icon {
-            background: var(--gradient-google);
+            background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
             color: white;
         }
 
@@ -880,130 +888,23 @@
             color: var(--primary-500);
         }
 
-        /* Updated Footer */
-        .footer {
-            background-color: var(--gray-900);
-            color: var(--gray-400);
-            padding: var(--spacing-xxxl) 0 0;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
-            gap: var(--spacing-xl);
-            margin-bottom: var(--spacing-xxxl);
-        }
-
-        .footer-col {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer-col h4 {
-            color: white;
-            margin-bottom: var(--spacing-lg);
-            font-size: 1.125rem;
-        }
-
-        .footer-col a {
-            color: var(--gray-400);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .footer-col a:hover {
-            color: white;
-        }
-
-        .footer .logo {
-            color: white;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .footer .logo i {
-            color: var(--primary-400);
-        }
-
-        .footer p {
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .social-links {
-            display: flex;
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-md);
-        }
-
-        .social-links a {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: var(--gray-800);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-normal);
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary-500);
-            color: white;
-        }
-
-        .subscribe-form {
-            display: flex;
-            margin-top: var(--spacing-md);
-        }
-
-        .subscribe-form input {
-            flex: 1;
-            padding: var(--spacing-sm) var(--spacing-md);
-            border: 1px solid var(--gray-700);
-            background-color: var(--gray-800);
-            border-radius: var(--radius-md) 0 0 var(--radius-md);
-            color: white;
-        }
-
-        .subscribe-form button {
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            padding: 0 var(--spacing-lg);
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
-            cursor: pointer;
-            transition: var(--transition-normal);
-        }
-
-        .subscribe-form button:hover {
-            background: var(--gradient-primary-hover);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid var(--gray-800);
-            padding: var(--spacing-lg) 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .copyright {
-            font-size: 0.875rem;
-        }
-
-        .legal-links {
-            display: flex;
-            gap: var(--spacing-lg);
-            font-size: 0.875rem;
-        }
-
-        .legal-links a {
-            color: var(--gray-500);
-        }
-
-        .legal-links a:hover {
-            color: var(--gray-300);
+        /* Footer */
+        .footer-col:nth-child(2) a:nth-child(3), /* API */
+        .footer-col:nth-child(2) a:nth-child(4), /* Roadmap */
+        .footer-col:nth-child(3) a:nth-child(3), /* Guides */
+        .footer-col:nth-child(3) a:nth-child(4), /* Status */
+        .footer-col:nth-child(4) a:nth-child(3), /* Careers */
+        .footer-col:nth-child(4) a:nth-child(4)  /* Partners */
+        {
+            display: none;
         }
 
         /* Responsive Design */
+          @media (max-width: 768px) {
+            .integration-grid {
+                grid-template-columns: 1fr;
+            }
+        }
         @media (max-width: 1024px) {
             .features-grid,
             .platform-cards,
@@ -1069,7 +970,7 @@
             }
 
             .integration-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
@@ -1108,9 +1009,63 @@
                 <h1>Smart sales analytics across all your platforms — track what’s working, optimize what’s not — all in one place.</h1>
                 <p>Scopelytix integrates data across multiple sales channels into one unified dashboard, helping sellers make better business decisions with Intelligent Analytics.</p>
                 
-                <div class="hero-cta">
-                    <a href="#" class="btn btn-primary">Start Free Trial</a>
-                    <a href="#" class="btn btn-light">View Demo</a>
+                <div class="dashboard-preview">
+                    <div class="chart-container">
+                        <div class="chart-title">Revenue by Platform (Last 7 Days)</div>
+                        <div class="chart">
+                            <div class="chart-grid">
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                            </div>
+                            <div class="chart-bars">
+                                <div class="chart-bar" style="height: 40%;">
+                                    <div class="bar-label">Mon</div>
+                                </div>
+                                <div class="chart-bar" style="height: 65%;">
+                                    <div class="bar-label">Tue</div>
+                                </div>
+                                <div class="chart-bar" style="height: 80%;">
+                                    <div class="bar-label">Wed</div>
+                                </div>
+                                <div class="chart-bar" style="height: 70%;">
+                                    <div class="bar-label">Thu</div>
+                                </div>
+                                <div class="chart-bar" style="height: 90%;">
+                                    <div class="bar-label">Fri</div>
+                                </div>
+                                <div class="chart-bar" style="height: 75%;">
+                                    <div class="bar-label">Sat</div>
+                                </div>
+                                <div class="chart-bar" style="height: 60%;">
+                                    <div class="bar-label">Sun</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="metrics">
+                        <div class="metric success">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>Revenue +24%</span>
+                        </div>
+                        <div class="metric warning">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>3 Slow Movers</span>
+                        </div>
+                    </div>
+                    <div class="platform-icons">
+                        <div class="platform-icon shopify">
+                            <i class="fab fa-shopify"></i>
+                        </div>
+                        <div class="platform-icon etsy">
+                            <i class="fab fa-etsy"></i>
+                        </div>
+                        <div class="platform-icon printful">
+                            <i class="fas fa-print"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="hero-image">
@@ -1365,6 +1320,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Benefits Section -->
     <section id="benefits" class="benefits">
