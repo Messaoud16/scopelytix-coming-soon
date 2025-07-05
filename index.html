@@ -2,11 +2,247 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scopelytix - Coming Soon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scopelytix - Smart Multi-Platform Sales Assistant</title>
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+      background: #f9fafb; /* gray 50 */
+      color: #111827; /* gray 900 */
+      line-height: 1.5;
+      font-size: 1rem;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      color: #3b82f6; /* primary 500 */
+      text-decoration: none;
+      transition: color 200ms ease-in-out;
+    }
+    a:hover, a:focus {
+      color: #2563eb; /* primary 600 */
+      outline: none;
+    }
+
+    /* Utility */
+    .container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    .flex {
+      display: flex;
+    }
+    .flex-center {
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 32px;
+      font-weight: 500;
+      font-size: 1.125rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      transition: background-color 200ms ease-in-out, transform 200ms ease-in-out;
+      user-select: none;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background: #2563eb;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+      outline: none;
+    }
+    h1, h2, h3, h4 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+    p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: #374151; /* gray 700 */
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 64px 16px 96px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+    header p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 32px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* Features Section */
+    section.features {
+      padding: 64px 16px;
+      background: white;
+      max-width: 1200px;
+      margin: -96px auto 64px;
+      border-radius: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 32px;
+    }
+    .feature-card {
+      border: 1px solid #e5e7eb; /* gray 200 */
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+      background: white;
+    }
+    .feature-card:hover,
+    .feature-card:focus-within {
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #3b82f6; /* primary 500 */
+      margin-bottom: 16px;
+    }
+    .feature-title {
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: #111827; /* gray 900 */
+    }
+    .feature-desc {
+      font-weight: 400;
+      color: #4b5563; /* gray 600 */
+      font-size: 0.95rem;
+    }
+
+    /* Call to Action */
+    section.cta {
+      text-align: center;
+      padding: 64px 16px 80px;
+      background: linear-gradient(135deg, #667eea 10%, #764ba2 90%);
+      color: white;
+      border-radius: 16px;
+      max-width: 700px;
+      margin: 0 auto 64px;
+      box-shadow: 0 20px 25px rgba(0,0,0,0.15);
+    }
+    section.cta h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    section.cta p {
+      font-weight: 500;
+      font-size: 1.125rem;
+      margin-bottom: 32px;
+      color: #dbeafe; /* primary 100 */
+    }
+
+    /* Footer */
+    footer {
+      padding: 32px 16px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #6b7280; /* gray 500 */
+      border-top: 1px solid #e5e7eb; /* gray 200 */
+      background: #f9fafb; /* gray 50 */
+    }
+
+    /* Responsive Typography */
+    @media (min-width: 600px) {
+      header h1 {
+        font-size: 4rem;
+      }
+      section.cta h2 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
 </head>
-<body style="text-align:center; font-family:sans-serif; margin-top:20%;">
-  <h1>🚀 Scopelytix</h1>
-  <p>Coming Soon. Stay tuned!</p>
+<body>
+  <header>
+    <div class="container">
+      <h1>Scopelytix</h1>
+      <p>Smart analytics and cross-platform sales tracking with smart alerts</p>
+      <button class="btn-primary" aria-label="Get Started with Scopelytix">Get Started</button>
+    </div>
+  </header>
+
+  <section class="features container" aria-label="Key Features">
+    <div class="features-grid">
+      <article class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">📊</div>
+        <h3 class="feature-title">Multi-platform Sales Tracking</h3>
+        <p class="feature-desc">Etsy, Shopify, Printful sales integrated in one unified dashboard.</p>
+      </article>
+
+      <article class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">🔔</div>
+        <h3 class="feature-title">Smart Alerts</h3>
+        <p class="feature-desc">Get notified about slow-moving or high-performing products instantly.</p>
+      </article>
+
+      <article class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">📈</div>
+        <h3 class="feature-title">Trend Analysis</h3>
+        <p class="feature-desc">Analyze historical data to identify patterns and optimize your sales strategy.</p>
+      </article>
+
+      <article class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">🧠</div>
+        <h3 class="feature-title">Actionable Insights</h3>
+        <p class="feature-desc">AI-driven recommendations to improve your store’s performance and revenue.</p>
+      </article>
+
+      <article class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">🧾</div>
+        <h3 class="feature-title">Automated Reports</h3>
+        <p class="feature-desc">Receive daily and weekly sales reports via email or Slack for easy monitoring.</p>
+      </article>
+
+      <article class="feature-card" tabindex="0">
+        <div class="feature-icon" aria-hidden="true">⚡</div>
+        <h3 class="feature-title">Easy Setup</h3>
+        <p class="feature-desc">Simple API integrations and a clean user interface get you started quickly.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta" aria-label="Call to Action">
+    <h2>Know what’s working, fix what’s not — all in one place.</h2>
+    <p>Save time, focus on what matters, and make smarter decisions with Scopelytix.</p>
+    <button class="btn-primary" aria-label="Sign Up for Scopelytix">Start Your Free Trial</button>
+  </section>
+
+  <footer>
+    &copy; 2025 Scopelytix. All rights reserved.
+  </footer>
 </body>
 </html>
