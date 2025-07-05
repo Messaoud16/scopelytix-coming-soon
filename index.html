@@ -6,6 +6,876 @@
     <title>Scopelytix - Smart Multi-Platform Sales Analytics</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            /* Primary Colors */
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-200: #bfdbfe;
+            --primary-300: #93c5fd;
+            --primary-400: #60a5fa;
+            --primary-500: #3b82f6;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+
+            /* Success/Green */
+            --success-50: #f0fdf4;
+            --success-100: #dcfce7;
+            --success-200: #bbf7d0;
+            --success-300: #86efac;
+            --success-400: #4ade80;
+            --success-500: #22c55e;
+            --success-600: #16a34a;
+            --success-700: #15803d;
+            --success-800: #166534;
+            --success-900: #14532d;
+
+            /* Warning/Orange */
+            --warning-50: #fffbeb;
+            --warning-100: #fef3c7;
+            --warning-200: #fde68a;
+            --warning-300: #fcd34d;
+            --warning-400: #fbbf24;
+            --warning-500: #f59e0b;
+            --warning-600: #d97706;
+            --warning-700: #b45309;
+            --warning-800: #92400e;
+            --warning-900: #78350f;
+
+            /* Error/Red */
+            --error-50: #fef2f2;
+            --error-100: #fee2e2;
+            --error-200: #fecaca;
+            --error-300: #fca5a5;
+            --error-400: #f87171;
+            --error-500: #ef4444;
+            --error-600: #dc2626;
+            --error-700: #b91c1c;
+            --error-800: #991b1b;
+            --error-900: #7f1d1d;
+
+            /* Neutral Grays */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+
+            /* Platform Colors */
+            --shopify: #95BF47;
+            --etsy: #F56400;
+            --printful: #1E88E5;
+
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-primary-hover: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+            --gradient-shopify: linear-gradient(135deg, #95BF47 0%, #7CB342 100%);
+            --gradient-etsy: linear-gradient(135deg, #F56400 0%, #E65100 100%);
+            --gradient-printful: linear-gradient(135deg, #1E88E5 0%, #1565C0 100%);
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-elevated: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-xxl: 48px;
+            --spacing-xxxl: 64px;
+
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-full: 9999px;
+
+            /* Transitions */
+            --transition-fast: 150ms ease-in-out;
+            --transition-normal: 200ms ease-in-out;
+            --transition-slow: 300ms ease-in-out;
+            --transition-bounce: 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            color: var(--gray-800);
+            background-color: var(--gray-50);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        section {
+            padding: var(--spacing-xxxl) 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--gray-900);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-600);
+            transition: var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--primary-800);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: var(--transition-normal);
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            gap: var(--spacing-sm);
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background: var(--gradient-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-600);
+            border: 1px solid var(--primary-300);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-50);
+            border-color: var(--primary-400);
+            transform: translateY(-1px);
+        }
+
+        .btn-light {
+            background-color: white;
+            color: var(--gray-800);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-light:hover {
+            background-color: var(--gray-100);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background-color: var(--primary-50);
+            color: var(--primary-700);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .logo i {
+            color: var(--primary-500);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-xl);
+        }
+
+        .nav-links a {
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-500);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: var(--spacing-xxxl);
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xxl);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-lg);
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+        }
+
+        .dashboard-preview {
+            background-color: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            padding: var(--spacing-lg);
+            position: relative;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart {
+            flex: 1;
+            background-color: var(--gray-100);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #667eea33 0%, #764ba233 100%);
+        }
+
+        .metrics {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .metric {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .metric.success {
+            background-color: var(--success-50);
+            color: var(--success-700);
+        }
+
+        .metric.warning {
+            background-color: var(--warning-50);
+            color: var(--warning-700);
+        }
+
+        .platform-icons {
+            position: absolute;
+            top: var(--spacing-lg);
+            right: var(--spacing-lg);
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .platform-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .platform-icon.shopify {
+            background: var(--gradient-shopify);
+        }
+
+        .platform-icon.etsy {
+            background: var(--gradient-etsy);
+        }
+
+        .platform-icon.printful {
+            background: var(--gradient-printful);
+        }
+
+        /* Features */
+        .features {
+            background-color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-xxxl);
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-normal);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .feature-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-lg);
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Platforms */
+        .platforms {
+            background-color: var(--gray-50);
+        }
+
+        .platform-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .platform-card {
+            background-color: white;
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-normal);
+            border-top: 4px solid transparent;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .platform-card.shopify {
+            border-color: var(--shopify);
+        }
+
+        .platform-card.etsy {
+            border-color: var(--etsy);
+        }
+
+        .platform-card.printful {
+            border-color: var(--printful);
+        }
+
+        .platform-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .platform-header i {
+            font-size: 2rem;
+        }
+
+        .platform-card.shopify .platform-header i {
+            color: var(--shopify);
+        }
+
+        .platform-card.etsy .platform-header i {
+            color: var(--etsy);
+        }
+
+        .platform-card.printful .platform-header i {
+            color: var(--printful);
+        }
+
+        .platform-card h3 {
+            font-size: 1.5rem;
+        }
+
+        .platform-card p {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .platform-card ul {
+            list-style: none;
+            margin-top: var(--spacing-lg);
+        }
+
+        .platform-card li {
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+        }
+
+        .platform-card li i {
+            color: var(--success-500);
+            margin-top: 3px;
+        }
+
+        /* Integrations Section */
+        .integrations {
+            background-color: white;
+        }
+
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .integration-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg);
+            background-color: var(--gray-50);
+            border-radius: var(--radius-lg);
+            transition: var(--transition-normal);
+        }
+
+        .integration-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .integration-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-lg);
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .integration-card.shopify .integration-icon {
+            background: var(--gradient-shopify);
+        }
+
+        .integration-card.etsy .integration-icon {
+            background: var(--gradient-etsy);
+        }
+
+        .integration-card.printful .integration-icon {
+            background: var(--gradient-printful);
+        }
+
+        .integration-card.salesforce .integration-icon {
+            background: linear-gradient(135deg, #00A1E0 0%, #1A3A8F 100%);
+        }
+
+        .integration-card h3 {
+            font-size: 1.125rem;
+            text-align: center;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: var(--gray-50);
+        }
+
+        .benefits-content {
+            display: flex;
+            gap: var(--spacing-xxl);
+            align-items: center;
+        }
+
+        .benefits-image {
+            flex: 1;
+            position: relative;
+            height: 400px;
+        }
+
+        .benefits-image-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--gray-200);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+        }
+
+        .benefits-image-inner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        .benefits-text {
+            flex: 1;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background-color: var(--primary-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-500);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--gray-900);
+            color: var(--gray-400);
+            padding: var(--spacing-xxxl) 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxxl);
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.125rem;
+        }
+
+        .footer-col a {
+            color: var(--gray-400);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer .logo {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer .logo i {
+            color: var(--primary-400);
+        }
+
+        .footer p {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--gray-800);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-normal);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-500);
+            color: white;
+        }
+
+        .subscribe-form {
+            display: flex;
+            margin-top: var(--spacing-md);
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--gray-700);
+            background-color: var(--gray-800);
+            border-radius: var(--radius-md) 0 0 var(--radius-md);
+            color: white;
+        }
+
+        .subscribe-form button {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0 var(--spacing-lg);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+
+        .subscribe-form button:hover {
+            background: var(--gradient-primary-hover);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding: var(--spacing-lg) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-size: 0.875rem;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            font-size: 0.875rem;
+        }
+
+        .legal-links a {
+            color: var(--gray-500);
+        }
+
+        .legal-links a:hover {
+            color: var(--gray-300);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .features-grid,
+            .platform-cards,
+            .integration-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .benefits-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero .container {
+                flex-direction: column;
+            }
+            
+            .nav-links,
+            .nav-actions {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .features-grid,
+            .platform-cards,
+            .integration-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+            
+            .legal-links {
+                justify-content: center;
+            }
+
+            .integration-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -18,13 +888,11 @@
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#platforms">Platforms</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#faq">FAQ</a>
+                <a href="#integrations">Integrations</a>
+                <a href="#benefits">Benefits</a>
             </div>
             <div class="nav-actions">
                 <a href="#" class="btn btn-secondary">Sign In</a>
-                <a href="#" class="btn btn-primary">Get Started</a>
             </div>
             <div class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
@@ -42,35 +910,12 @@
                 </div>
                 <h1>Know what's working, fix what's not — all in one place.</h1>
                 <p>Scopelytix integrates data across multiple sales channels into one unified dashboard, helping sellers make better business decisions with AI-driven insights.</p>
-                <div class="hero-actions">
-                    <a href="#" class="btn btn-primary">Start Free Trial</a>
-                    <a href="#" class="btn btn-secondary">
-                        <i class="fas fa-play-circle"></i>
-                        Watch Demo
-                    </a>
-                </div>
-                <div class="stats">
-                    <div class="stat-item">
-                        <strong>1,200+</strong>
-                        <span>Active Sellers</span>
-                    </div>
-                    <div class="stat-item">
-                        <strong>98%</strong>
-                        <span>Customer Satisfaction</span>
-                    </div>
-                    <div class="stat-item">
-                        <strong>15M+</strong>
-                        <span>Products Tracked</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-image">
                 <div class="dashboard-preview">
                     <div class="chart"></div>
                     <div class="metrics">
                         <div class="metric success">
                             <i class="fas fa-arrow-up"></i>
-                            <span>+24% Revenue</span>
+                            <span>Revenue +24%</span>
                         </div>
                         <div class="metric warning">
                             <i class="fas fa-exclamation-circle"></i>
@@ -86,6 +931,29 @@
                         </div>
                         <div class="platform-icon printful">
                             <i class="fas fa-print"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="dashboard-preview">
+                    <div class="chart"></div>
+                    <div class="metrics">
+                        <div class="metric success">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>Orders +18%</span>
+                        </div>
+                        <div class="metric success">
+                            <i class="fas fa-star"></i>
+                            <span>2 Top Sellers</span>
+                        </div>
+                    </div>
+                    <div class="platform-icons">
+                        <div class="platform-icon shopify">
+                            <i class="fab fa-shopify"></i>
+                        </div>
+                        <div class="platform-icon etsy">
+                            <i class="fab fa-etsy"></i>
                         </div>
                     </div>
                 </div>
@@ -197,159 +1065,121 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="testimonials">
+    <!-- Integrations Section -->
+    <section id="integrations" class="integrations">
         <div class="container">
             <div class="section-header">
-                <div class="badge">TRUSTED BY SELLERS</div>
-                <h2>What our customers say</h2>
-                <p>Join thousands of successful eCommerce sellers</p>
+                <div class="badge">SEAMLESS INTEGRATIONS</div>
+                <h2>Works with your existing tools</h2>
+                <p>Connect Scopelytix with your favorite eCommerce platforms and services</p>
             </div>
-            <div class="testimonial-cards">
-                <div class="testimonial-card">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+            <div class="integration-grid">
+                <div class="integration-card shopify">
+                    <div class="integration-icon">
+                        <i class="fab fa-shopify"></i>
                     </div>
-                    <p>"Scopelytix helped me identify my top-performing products and double my revenue in just 3 months. The smart alerts saved me from overstocking slow movers."</p>
-                    <div class="user">
-                        <div class="avatar"></div>
-                        <div class="user-info">
-                            <strong>Sarah Johnson</strong>
-                            <span>POD Store Owner</span>
-                        </div>
-                    </div>
+                    <h3>Shopify</h3>
                 </div>
-                <div class="testimonial-card">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                <div class="integration-card etsy">
+                    <div class="integration-icon">
+                        <i class="fab fa-etsy"></i>
                     </div>
-                    <p>"As someone with stores on both Etsy and Shopify, having all my data in one place is a game-changer. The insights have been incredibly valuable for making business decisions."</p>
-                    <div class="user">
-                        <div class="avatar"></div>
-                        <div class="user-info">
-                            <strong>Michael Torres</strong>
-                            <span>Multi-Platform Seller</span>
-                        </div>
-                    </div>
+                    <h3>Etsy</h3>
                 </div>
-                <div class="testimonial-card">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                <div class="integration-card printful">
+                    <div class="integration-icon">
+                        <i class="fas fa-print"></i>
                     </div>
-                    <p>"The automated reports save me hours every week. I love getting my performance summary in Slack every Monday morning without lifting a finger."</p>
-                    <div class="user">
-                        <div class="avatar"></div>
-                        <div class="user-info">
-                            <strong>Emma Chen</strong>
-                            <span>Etsy Power Seller</span>
-                        </div>
-                    </div>
+                    <h3>Printful</h3>
                 </div>
-            </div>
-            <div class="logos">
-                <div class="logo-item">TechCrunch</div>
-                <div class="logo-item">Forbes</div>
-                <div class="logo-item">Shopify</div>
-                <div class="logo-item">Etsy</div>
+                <div class="integration-card salesforce">
+                    <div class="integration-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Salesforce</h3>
+                </div>
+                <div class="integration-card">
+                    <div class="integration-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>Google Analytics</h3>
+                </div>
+                <div class="integration-card">
+                    <div class="integration-icon">
+                        <i class="fab fa-slack"></i>
+                    </div>
+                    <h3>Slack</h3>
+                </div>
+                <div class="integration-card">
+                    <div class="integration-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                </div>
+                <div class="integration-card">
+                    <div class="integration-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App</h3>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section id="pricing" class="pricing">
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
         <div class="container">
             <div class="section-header">
-                <div class="badge">AFFORDABLE PLANS</div>
-                <h2>Simple, transparent pricing</h2>
-                <p>Choose the plan that fits your business needs</p>
+                <div class="badge">BUSINESS BENEFITS</div>
+                <h2>Why sellers choose Scopelytix</h2>
+                <p>Transform your eCommerce business with intelligent analytics</p>
             </div>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Starter</h3>
-                        <p>Perfect for solo entrepreneurs</p>
-                        <div class="price">
-                            <span>$19</span>
-                            <span>/month</span>
+            <div class="benefits-content">
+                <div class="benefits-text">
+                    <h3>Make data-driven decisions with confidence</h3>
+                    <p>Scopelytix eliminates the guesswork from eCommerce by providing actionable insights based on your actual performance data across all platforms.</p>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Save Time</h4>
+                                <p>Reduce hours spent on manual reporting by 80% with automated analytics</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div>
+                                <h4>Increase Revenue</h4>
+                                <p>Identify your most profitable products and optimize your inventory</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div>
+                                <h4>Prevent Losses</h4>
+                                <p>Get early warnings about slow-moving inventory and declining trends</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h4>Gain Insights</h4>
+                                <p>Discover hidden opportunities with AI-powered business intelligence</p>
+                            </div>
                         </div>
                     </div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 1 Platform Connection</li>
-                        <li><i class="fas fa-check"></i> Basic Analytics Dashboard</li>
-                        <li><i class="fas fa-check"></i> Daily Email Reports</li>
-                        <li><i class="fas fa-check"></i> 100 Monthly Alerts</li>
-                        <li><i class="fas fa-times"></i> Historical Trend Analysis</li>
-                        <li><i class="fas fa-times"></i> AI Recommendations</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary">Get Started</a>
                 </div>
-                <div class="pricing-card featured">
-                    <div class="pricing-header">
-                        <div class="popular">MOST POPULAR</div>
-                        <h3>Growth</h3>
-                        <p>For growing businesses</p>
-                        <div class="price">
-                            <span>$49</span>
-                            <span>/month</span>
-                        </div>
-                    </div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 3 Platform Connections</li>
-                        <li><i class="fas fa-check"></i> Advanced Analytics Dashboard</li>
-                        <li><i class="fas fa-check"></i> Email + Slack Reports</li>
-                        <li><i class="fas fa-check"></i> Unlimited Alerts</li>
-                        <li><i class="fas fa-check"></i> 12-Month Trend Analysis</li>
-                        <li><i class="fas fa-check"></i> Basic AI Recommendations</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Get Started</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Enterprise</h3>
-                        <p>For established brands</p>
-                        <div class="price">
-                            <span>$99</span>
-                            <span>/month</span>
-                        </div>
-                    </div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Unlimited Platforms</li>
-                        <li><i class="fas fa-check"></i> Premium Analytics Dashboard</li>
-                        <li><i class="fas fa-check"></i> Custom Report Delivery</li>
-                        <li><i class="fas fa-check"></i> Priority Alerts</li>
-                        <li><i class="fas fa-check"></i> Unlimited Trend Analysis</li>
-                        <li><i class="fas fa-check"></i> Advanced AI Recommendations</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary">Get Started</a>
-                </div>
-            </div>
-            <div class="pricing-footer">
-                <p><i class="fas fa-sync-alt"></i> All plans come with a 14-day free trial. No credit card required.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to grow your business smarter?</h2>
-                <p>Join thousands of sellers who use Scopelytix to make data-driven decisions and boost their sales.</p>
-                <div class="cta-actions">
-                    <a href="#" class="btn btn-primary">Start Free Trial</a>
-                    <a href="#" class="btn btn-light">Schedule a Demo</a>
+                <div class="benefits-image">
+                    <div class="benefits-image-inner"></div>
                 </div>
             </div>
         </div>
@@ -376,7 +1206,7 @@
                     <h4>Product</h4>
                     <a href="#">Features</a>
                     <a href="#">Integrations</a>
-                    <a href="#">Pricing</a>
+                    <a href="#">API</a>
                     <a href="#">Roadmap</a>
                 </div>
                 <div class="footer-col">
@@ -384,7 +1214,7 @@
                     <a href="#">Documentation</a>
                     <a href="#">Blog</a>
                     <a href="#">Guides</a>
-                    <a href="#">API Status</a>
+                    <a href="#">Status</a>
                 </div>
                 <div class="footer-col">
                     <h4>Company</h4>
@@ -394,7 +1224,7 @@
                     <a href="#">Partners</a>
                 </div>
                 <div class="footer-col">
-                    <h4>Subscribe</h4>
+                    <h4>Stay Updated</h4>
                     <p>Get product updates and business tips</p>
                     <div class="subscribe-form">
                         <input type="email" placeholder="Your email address">
@@ -442,1004 +1272,3 @@
     </script>
 </body>
 </html>
-
-<style>
-/* Base Styles */
-:root {
-    /* Primary Colors */
-    --primary-50: #eff6ff;
-    --primary-100: #dbeafe;
-    --primary-200: #bfdbfe;
-    --primary-300: #93c5fd;
-    --primary-400: #60a5fa;
-    --primary-500: #3b82f6;
-    --primary-600: #2563eb;
-    --primary-700: #1d4ed8;
-    --primary-800: #1e40af;
-    --primary-900: #1e3a8a;
-
-    /* Success/Green */
-    --success-50: #f0fdf4;
-    --success-100: #dcfce7;
-    --success-200: #bbf7d0;
-    --success-300: #86efac;
-    --success-400: #4ade80;
-    --success-500: #22c55e;
-    --success-600: #16a34a;
-    --success-700: #15803d;
-    --success-800: #166534;
-    --success-900: #14532d;
-
-    /* Warning/Orange */
-    --warning-50: #fffbeb;
-    --warning-100: #fef3c7;
-    --warning-200: #fde68a;
-    --warning-300: #fcd34d;
-    --warning-400: #fbbf24;
-    --warning-500: #f59e0b;
-    --warning-600: #d97706;
-    --warning-700: #b45309;
-    --warning-800: #92400e;
-    --warning-900: #78350f;
-
-    /* Error/Red */
-    --error-50: #fef2f2;
-    --error-100: #fee2e2;
-    --error-200: #fecaca;
-    --error-300: #fca5a5;
-    --error-400: #f87171;
-    --error-500: #ef4444;
-    --error-600: #dc2626;
-    --error-700: #b91c1c;
-    --error-800: #991b1b;
-    --error-900: #7f1d1d;
-
-    /* Neutral Grays */
-    --gray-50: #f9fafb;
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-300: #d1d5db;
-    --gray-400: #9ca3af;
-    --gray-500: #6b7280;
-    --gray-600: #4b5563;
-    --gray-700: #374151;
-    --gray-800: #1f2937;
-    --gray-900: #111827;
-
-    /* Platform Colors */
-    --shopify: #95BF47;
-    --etsy: #F56400;
-    --printful: #1E88E5;
-
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-primary-hover: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
-    --gradient-shopify: linear-gradient(135deg, #95BF47 0%, #7CB342 100%);
-    --gradient-etsy: linear-gradient(135deg, #F56400 0%, #E65100 100%);
-    --gradient-printful: linear-gradient(135deg, #1E88E5 0%, #1565C0 100%);
-
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    --shadow-elevated: 0 4px 20px rgba(0, 0, 0, 0.08);
-
-    /* Spacing */
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 32px;
-    --spacing-xxl: 48px;
-    --spacing-xxxl: 64px;
-
-    /* Border Radius */
-    --radius-sm: 6px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 16px;
-    --radius-full: 9999px;
-
-    /* Transitions */
-    --transition-fast: 150ms ease-in-out;
-    --transition-normal: 200ms ease-in-out;
-    --transition-slow: 300ms ease-in-out;
-    --transition-bounce: 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    color: var(--gray-800);
-    background-color: var(--gray-50);
-    line-height: 1.5;
-    overflow-x: hidden;
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-}
-
-section {
-    padding: var(--spacing-xxxl) 0;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--gray-900);
-}
-
-p {
-    margin-bottom: var(--spacing-md);
-}
-
-a {
-    text-decoration: none;
-    color: var(--primary-600);
-    transition: var(--transition-fast);
-}
-
-a:hover {
-    color: var(--primary-800);
-}
-
-/* Buttons */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    transition: var(--transition-normal);
-    cursor: pointer;
-    text-align: center;
-    border: none;
-    gap: var(--spacing-sm);
-}
-
-.btn-primary {
-    background: var(--gradient-primary);
-    color: white;
-    box-shadow: var(--shadow-md);
-}
-
-.btn-primary:hover {
-    background: var(--gradient-primary-hover);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--primary-600);
-    border: 1px solid var(--primary-300);
-}
-
-.btn-secondary:hover {
-    background-color: var(--primary-50);
-    border-color: var(--primary-400);
-    transform: translateY(-1px);
-}
-
-.btn-light {
-    background-color: white;
-    color: var(--gray-800);
-    box-shadow: var(--shadow-sm);
-}
-
-.btn-light:hover {
-    background-color: var(--gray-100);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-}
-
-/* Badges */
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    background-color: var(--primary-50);
-    color: var(--primary-700);
-    border-radius: var(--radius-full);
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-lg);
-}
-
-/* Navigation */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    box-shadow: var(--shadow-sm);
-    z-index: 1000;
-    padding: var(--spacing-sm) 0;
-}
-
-.navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--gray-900);
-}
-
-.logo i {
-    color: var(--primary-500);
-}
-
-.nav-links {
-    display: flex;
-    gap: var(--spacing-xl);
-}
-
-.nav-links a {
-    color: var(--gray-700);
-    font-weight: 500;
-}
-
-.nav-links a:hover {
-    color: var(--primary-500);
-}
-
-.nav-actions {
-    display: flex;
-    gap: var(--spacing-md);
-}
-
-.mobile-menu-btn {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Hero Section */
-.hero {
-    padding-top: 120px;
-    padding-bottom: var(--spacing-xxxl);
-    background: var(--gradient-primary);
-    color: white;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero .container {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xxl);
-    position: relative;
-    z-index: 2;
-}
-
-.hero-content {
-    flex: 1;
-}
-
-.hero-image {
-    flex: 1;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-lg);
-    color: white;
-}
-
-.hero p {
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin-bottom: var(--spacing-xl);
-    opacity: 0.9;
-}
-
-.hero-actions {
-    display: flex;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-xl);
-}
-
-.stats {
-    display: flex;
-    gap: var(--spacing-xl);
-    margin-top: var(--spacing-xl);
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-item strong {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: var(--spacing-xs);
-}
-
-.stat-item span {
-    font-size: 0.875rem;
-    opacity: 0.8;
-}
-
-.dashboard-preview {
-    background-color: white;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-xl);
-    padding: var(--spacing-lg);
-    position: relative;
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-}
-
-.chart {
-    flex: 1;
-    background-color: var(--gray-100);
-    border-radius: var(--radius-lg);
-    margin-bottom: var(--spacing-md);
-    position: relative;
-    overflow: hidden;
-}
-
-.chart::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, #667eea33 0%, #764ba233 100%);
-}
-
-.metrics {
-    display: flex;
-    gap: var(--spacing-md);
-}
-
-.metric {
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-}
-
-.metric.success {
-    background-color: var(--success-50);
-    color: var(--success-700);
-}
-
-.metric.warning {
-    background-color: var(--warning-50);
-    color: var(--warning-700);
-}
-
-.platform-icons {
-    position: absolute;
-    top: var(--spacing-lg);
-    right: var(--spacing-lg);
-    display: flex;
-    gap: var(--spacing-sm);
-}
-
-.platform-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
-    box-shadow: var(--shadow-md);
-}
-
-.platform-icon.shopify {
-    background: var(--gradient-shopify);
-}
-
-.platform-icon.etsy {
-    background: var(--gradient-etsy);
-}
-
-.platform-icon.printful {
-    background: var(--gradient-printful);
-}
-
-/* Features */
-.features {
-    background-color: white;
-}
-
-.section-header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto var(--spacing-xxxl);
-}
-
-.section-header h2 {
-    font-size: 2.25rem;
-    margin-bottom: var(--spacing-md);
-}
-
-.section-header p {
-    font-size: 1.125rem;
-    color: var(--gray-600);
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-}
-
-.feature-card {
-    background-color: white;
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
-    box-shadow: var(--shadow-card);
-    transition: var(--transition-normal);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.feature-card.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.feature-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: var(--radius-lg);
-    background: var(--gradient-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-lg);
-}
-
-.feature-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-sm);
-}
-
-/* Platforms */
-.platforms {
-    background-color: var(--gray-50);
-}
-
-.platform-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-}
-
-.platform-card {
-    background-color: white;
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
-    box-shadow: var(--shadow-card);
-    transition: var(--transition-normal);
-    border-top: 4px solid transparent;
-}
-
-.platform-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.platform-card.shopify {
-    border-color: var(--shopify);
-}
-
-.platform-card.etsy {
-    border-color: var(--etsy);
-}
-
-.platform-card.printful {
-    border-color: var(--printful);
-}
-
-.platform-header {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-lg);
-}
-
-.platform-header i {
-    font-size: 2rem;
-}
-
-.platform-card.shopify .platform-header i {
-    color: var(--shopify);
-}
-
-.platform-card.etsy .platform-header i {
-    color: var(--etsy);
-}
-
-.platform-card.printful .platform-header i {
-    color: var(--printful);
-}
-
-.platform-card h3 {
-    font-size: 1.5rem;
-}
-
-.platform-card p {
-    color: var(--gray-600);
-    margin-bottom: var(--spacing-lg);
-}
-
-.platform-card ul {
-    list-style: none;
-    margin-top: var(--spacing-lg);
-}
-
-.platform-card li {
-    margin-bottom: var(--spacing-sm);
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
-}
-
-.platform-card li i {
-    color: var(--success-500);
-    margin-top: 3px;
-}
-
-/* Testimonials */
-.testimonials {
-    background-color: white;
-}
-
-.testimonial-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-}
-
-.testimonial-card {
-    background-color: white;
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
-    box-shadow: var(--shadow-card);
-    border: 1px solid var(--gray-200);
-}
-
-.rating {
-    color: var(--warning-500);
-    margin-bottom: var(--spacing-md);
-}
-
-.testimonial-card p {
-    font-style: italic;
-    margin-bottom: var(--spacing-lg);
-    color: var(--gray-700);
-}
-
-.user {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-}
-
-.avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background-color: var(--gray-200);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gray-600);
-}
-
-.user-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.user-info strong {
-    font-weight: 600;
-}
-
-.user-info span {
-    color: var(--gray-600);
-    font-size: 0.875rem;
-}
-
-.logos {
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-xxl);
-    margin-top: var(--spacing-xxxl);
-    flex-wrap: wrap;
-}
-
-.logo-item {
-    font-weight: 700;
-    color: var(--gray-500);
-    opacity: 0.7;
-}
-
-/* Pricing */
-.pricing {
-    background-color: var(--gray-50);
-}
-
-.pricing-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-}
-
-.pricing-card {
-    background-color: white;
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--gray-200);
-    transition: var(--transition-normal);
-    position: relative;
-}
-
-.pricing-card.featured {
-    border: 1px solid var(--primary-300);
-    box-shadow: var(--shadow-lg);
-    transform: scale(1.03);
-}
-
-.pricing-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.pricing-card.featured:hover {
-    transform: translateY(-5px) scale(1.03);
-}
-
-.popular {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--gradient-primary);
-    color: white;
-    padding: var(--spacing-xs) var(--spacing-md);
-    border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    font-weight: 600;
-}
-
-.pricing-header {
-    text-align: center;
-    padding-bottom: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
-    border-bottom: 1px solid var(--gray-200);
-}
-
-.pricing-header h3 {
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-sm);
-}
-
-.pricing-header p {
-    color: var(--gray-600);
-}
-
-.price {
-    margin-top: var(--spacing-md);
-}
-
-.price span:first-child {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--gray-900);
-}
-
-.price span:last-child {
-    color: var(--gray-600);
-}
-
-.pricing-card ul {
-    list-style: none;
-    margin-bottom: var(--spacing-xl);
-    flex: 1;
-}
-
-.pricing-card li {
-    margin-bottom: var(--spacing-sm);
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
-}
-
-.pricing-card li i.fa-check {
-    color: var(--success-500);
-}
-
-.pricing-card li i.fa-times {
-    color: var(--gray-400);
-}
-
-.pricing-footer {
-    text-align: center;
-    margin-top: var(--spacing-xxl);
-    display: flex;
-    justify-content: center;
-}
-
-.pricing-footer p {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm) var(--spacing-lg);
-    background-color: var(--primary-50);
-    border-radius: var(--radius-full);
-    color: var(--primary-700);
-    font-weight: 500;
-}
-
-.pricing-footer i {
-    color: var(--primary-500);
-}
-
-/* CTA */
-.cta {
-    background: var(--gradient-primary);
-    color: white;
-    text-align: center;
-    padding: var(--spacing-xxxl) 0;
-}
-
-.cta h2 {
-    font-size: 2.25rem;
-    margin-bottom: var(--spacing-md);
-    color: white;
-}
-
-.cta p {
-    font-size: 1.25rem;
-    max-width: 700px;
-    margin: 0 auto var(--spacing-xl);
-    opacity: 0.9;
-}
-
-.cta-actions {
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-md);
-}
-
-.btn-light {
-    background-color: white;
-    color: var(--gray-800);
-}
-
-/* Footer */
-.footer {
-    background-color: var(--gray-900);
-    color: var(--gray-400);
-    padding: var(--spacing-xxxl) 0 0;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-xxxl);
-}
-
-.footer-col {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-col h4 {
-    color: white;
-    margin-bottom: var(--spacing-lg);
-    font-size: 1.125rem;
-}
-
-.footer-col a {
-    color: var(--gray-400);
-    margin-bottom: var(--spacing-sm);
-}
-
-.footer-col a:hover {
-    color: white;
-}
-
-.footer .logo {
-    color: white;
-    margin-bottom: var(--spacing-md);
-}
-
-.footer .logo i {
-    color: var(--primary-400);
-}
-
-.footer p {
-    margin-bottom: var(--spacing-lg);
-}
-
-.social-links {
-    display: flex;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-md);
-}
-
-.social-links a {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: var(--gray-800);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition-normal);
-}
-
-.social-links a:hover {
-    background-color: var(--primary-500);
-    color: white;
-}
-
-.subscribe-form {
-    display: flex;
-    margin-top: var(--spacing-md);
-}
-
-.subscribe-form input {
-    flex: 1;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border: 1px solid var(--gray-700);
-    background-color: var(--gray-800);
-    border-radius: var(--radius-md) 0 0 var(--radius-md);
-    color: white;
-}
-
-.subscribe-form button {
-    background: var(--gradient-primary);
-    color: white;
-    border: none;
-    padding: 0 var(--spacing-lg);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-    cursor: pointer;
-    transition: var(--transition-normal);
-}
-
-.subscribe-form button:hover {
-    background: var(--gradient-primary-hover);
-}
-
-.footer-bottom {
-    border-top: 1px solid var(--gray-800);
-    padding: var(--spacing-lg) 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.copyright {
-    font-size: 0.875rem;
-}
-
-.legal-links {
-    display: flex;
-    gap: var(--spacing-lg);
-    font-size: 0.875rem;
-}
-
-.legal-links a {
-    color: var(--gray-500);
-}
-
-.legal-links a:hover {
-    color: var(--gray-300);
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .features-grid,
-    .platform-cards,
-    .testimonial-cards,
-    .pricing-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .footer-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .hero .container {
-        flex-direction: column;
-    }
-    
-    .nav-links,
-    .nav-actions {
-        display: none;
-    }
-    
-    .mobile-menu-btn {
-        display: block;
-    }
-    
-    .features-grid,
-    .platform-cards,
-    .testimonial-cards,
-    .pricing-cards {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .hero h1 {
-        font-size: 2.25rem;
-    }
-    
-    .stats {
-        flex-wrap: wrap;
-    }
-    
-    .cta-actions {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-bottom {
-        flex-direction: column;
-        gap: var(--spacing-md);
-        text-align: center;
-    }
-    
-    .legal-links {
-        justify-content: center;
-    }
-}
-</style>
